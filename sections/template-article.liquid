@@ -10,7 +10,6 @@
           </h1>
         </div>
       </div>
-
       {% when 'article_author' %}
       <div class="flex items-center justify-center">
         <div class="max-w-7xl text-center">
@@ -18,7 +17,6 @@
             <small>{{ article.author }}</small>
           {% endif %}
         </div>
-
       </div>
       {% when 'article_published_date' %}
       <div class="flex items-center justify-center">
@@ -39,9 +37,7 @@
           {% assign placeholder_image = 'lifestyle-1' %}
           {{ placeholder_image | placeholder_svg_tag: 'w-full h-80 md:h-96 object-cover object-center p-5' }}
         {% endif %}
-
       </div>
-
       {% when 'article_content' %}
       <div class=" flex items-center justify-center">
         <div class="max-w-7xl">
@@ -55,7 +51,7 @@
   <div id="comments" class="my-8">
     {% if article.comments_count > 0 %}
       <div class="flex-1 items-center justify-center mx-auto max-w-4xl px-4">
-        <h1 class="text-lg mb-4 font-medium">See what people are saying</h1>
+        <h1 class="text-lg mb-4 font-medium">Comments</h1>
 
         {% paginate article.comments by 5 %}
           {% for commenttext in article.comments %}
@@ -65,7 +61,6 @@
               <p class="text-sm">{{ commenttext.content }}</p>
             </div>
           {% endfor %}
-
           {% if paginate.pages > 1 %}
             {{ paginate | default_pagination }}
           {% endif %}
