@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "sections": {
     "template": {
       "type": "template-article",
@@ -27,6 +28,30 @@
           "type": "article_content",
           "settings": {
           }
+=======
+    "name": "Template Article",
+    "sections": {
+        "template": {
+            "type": "template-article",
+            "blocks": {
+                "title":{
+                    "type": "article_title"
+                },
+                "author":{
+                    "type": "article_author"
+                },
+                "published_date":{
+                    "type": "article_published_date"
+                },
+                "thumbmail":{
+                    "type": "featured_image"
+                },
+                "content":{
+                    "type": "article_content"
+                } 
+            },
+            "block_order": ["thumbmail","title","author","published_date","content"]
+>>>>>>> 3b930a2 (Updated Article II)
         }
       },
       "block_order": [
