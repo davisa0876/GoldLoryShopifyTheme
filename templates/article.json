@@ -50,7 +50,6 @@
                 } 
             },
             "block_order": ["thumbmail","title","author","published_date","content"]
->>>>>>> 3b930a2 (Updated Article II)
         }
       },
       "block_order": [
