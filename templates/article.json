@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "sections": {
     "template": {
       "type": "template-article",
@@ -28,7 +27,7 @@
           "type": "article_content",
           "settings": {
           }
-=======
+     },
     "name": "Template Article",
     "sections": {
         "template": {
