@@ -40,7 +40,13 @@
     </div>
 
     <div class="max-w-6xl mx-auto">
-      {% render 'pagination', pagination: paginate %}
+      {% if section.settings.show_pages_numbers %}
+        {% render 'pagination_complete', pagination: paginate %}
+      {% else %}
+        {% render 'pagination', pagination: paginate %}
+      {% endif %}
+
+
     </div>
   {% endpaginate %}
 </div>
@@ -56,6 +62,11 @@
         "id": "blog_read_more",
         "label": "Read more label",
         "default": "Read more"
+      }, {
+        "type": "checkbox",
+        "id": "show_pages_numbers",
+        "default": false,
+        "label": "Show page numbers in the pagination?"
       }, {
         "type": "range",
         "id": "number_of_blog_posts",

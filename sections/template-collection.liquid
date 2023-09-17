@@ -1,0 +1,74 @@
+<div class="px-4 py-8">
+  <a href="{{ routes.collections_url }}" class="text-base text-gray-500 hover:underline text-center block my-4">Go back to collections</a>
+  {% paginate collection.products by section.settings.number_of_products_per_page %}
+    <h1 class="text-3xl text-center">{{ collection.title }}</h1>
+
+    {% if section.settings.show_collection_image %}
+      <div class="w-full max-w-9xl bg-whigt-100 rounded-lg mx-2 md:mx-auto overflow-hidden my-4" itemprop="image">
+        {% if collection.image != blank %}
+          <img
+            class="w-full h-80 md:h-96 object-cover object-center p-5"
+            src="{{collection.image | img_url: 'large'}}"
+            alt="{{collection.image.alt}}">
+        {% else %}
+          {% assign placeholder_image = 'lifestyle-1' %}
+          {{ placeholder_image | placeholder_svg_tag: 'w-full h-80 md:h-96 object-cover object-center p-5' }}
+        {% endif %}
+      </div>
+    {% endif %}
+
+
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {% for product in collection.products %}
+          {% render 'product-card', product_product: product %}
+        {% else %}
+          <p>There are no products inside of this collection</p>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto">
+      {% if section.settings.show_pages_numbers %}
+        {% render 'pagination_complete', pagination: paginate %}
+      {% else %}
+        {% render 'pagination', pagination: paginate %}
+      {% endif %}
+    </div>
+  {% endpaginate %}
+</div>
+{% schema %}
+  {
+    "name": "Collections",
+    "settings": [
+      {
+        "type": "number",
+        "id": "number_of_products_per_page",
+        "default": 9,
+        "label": "Number of products per page"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_pages_numbers",
+        "default": false,
+        "label": "Show page numbers in the pagination?"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "default": true,
+        "label": "Show vendor"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_collection_image",
+        "default": true,
+        "label": "Show collection Image?"
+      }, {
+        "type": "checkbox",
+        "id": "show_collection_details",
+        "default": true,
+        "label": "Show collection details?"
+      }
+    ]
+  }
+{% endschema %}
